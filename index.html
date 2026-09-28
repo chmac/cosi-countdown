@@ -42,6 +42,7 @@
   <div class="unit"><span class="value" id="days">0</span><span class="label">Days</span></div>
   <div class="unit"><span class="value" id="hours">0</span><span class="label">Hours</span></div>
   <div class="unit"><span class="value" id="minutes">0</span><span class="label">Minutes</span></div>
+  <div class="unit"><span class="value" id="seconds">0</span><span class="label">Seconds</span></div>
 </div>
 
 <script>
@@ -71,15 +72,18 @@ function update() {
   const hours = Math.floor(remainingMs / (1000 * 60 * 60));
   remainingMs -= hours * (1000 * 60 * 60);
   const minutes = Math.floor(remainingMs / (1000 * 60));
+  remainingMs -= minutes * (1000 * 60);
+  const seconds = Math.floor(remainingMs / 1000);
 
   document.getElementById('months').textContent = months;
   document.getElementById('days').textContent = days;
   document.getElementById('hours').textContent = hours;
   document.getElementById('minutes').textContent = minutes;
+  document.getElementById('seconds').textContent = seconds;
 }
 
 update();
-setInterval(update, 1000 * 30);
+setInterval(update, 1000);
 </script>
 
 </body>
